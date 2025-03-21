@@ -21,3 +21,11 @@ export function setClick(selector, callback) {
   });
   qs(selector).addEventListener("click", callback);
 }
+
+// get the key value from an URL query and return it
+export function getParam(param) {
+  const queryString = window.location.search;
+  const UrlParams = new URLSearchParams(queryString);
+  const value = UrlParams.get(param);
+  return value
+}
