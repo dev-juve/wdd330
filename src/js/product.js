@@ -1,6 +1,7 @@
 import { getParam } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
 import ProductDetails from "./ProductDetails.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
 
 // Get the product ID from the url
 const productId = getParam("product");
@@ -13,6 +14,8 @@ const productDetails = new ProductDetails(productId, dataSource);
 
 // Start everything
 productDetails.init();
+
+loadHeaderFooter();
 
 /* function addProductToCart(product) {
   const cartItems = getLocalStorage("so-cart") || [];

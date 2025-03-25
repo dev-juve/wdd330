@@ -45,3 +45,25 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   }
   
 }
+
+export function renderWithTemplate(template, parentElement, data, callback) {
+  parentElement.innerHTML = template;
+  if (callback){
+    callback(data);
+  }
+}
+
+export async function loadTemplate(path) {
+  const response = await fetch(path);
+  const template = await response.text();
+  return template;
+}
+
+export async function loadHeaderFooter() {
+  const headerTemp = await loadTemplate("../partials/header.html");
+  const footerTemp = await loadTemplate("../partials/footer.html");
+  const header = document.getElementById("main-header");
+  const footer = document.getElementById("main-footer");
+  renderWithTemplate(headerTemp, header);
+  renderWithTemplate(footerTemp, footer);
+}
