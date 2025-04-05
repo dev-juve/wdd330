@@ -14,9 +14,14 @@ export default class ProductData {
   }
   async getData(category) {
     const url = `${baseURL}products/search/${category}`;
-    const response = await fetch(url);
-    const data = await convertToJson(response);
-    return data.Result;
+    try {
+      const response = await fetch(url);
+      const data = await convertToJson(response);
+      return data.Result;
+    } catch (err) {
+      console.error(`Fetch failed for ${url}`, err.message);
+      return [];
+    }
   }
   async findProductById(id) {
     const url = `${baseURL}product/${id}`;
