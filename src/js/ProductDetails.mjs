@@ -20,7 +20,24 @@ export default class ProductDetails {
         const cartItems = getLocalStorage("so-cart") || [];
         cartItems.push(this.product);
         setLocalStorage("so-cart", cartItems);
-      }
+
+        // Create the message
+      const message = `${this.product.NameWithoutBrand} added to cart successfully!`;
+      const banner = document.getElementById("message-banner");
+
+      // Show the message
+      banner.textContent = message;
+      banner.style.display = "block";
+      banner.classList.add("show-banner"); // Optional: use a CSS class for transitions
+
+      // Hide it after 3 seconds
+      setTimeout(() => {
+        banner.style.display = "none";
+        banner.textContent = "";
+        banner.classList.remove("show-banner");
+        }, 3000);
+      
+    } 
 
     renderProductDetails() {
         productDetailsTemplate(this.product);
