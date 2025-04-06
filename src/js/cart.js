@@ -36,9 +36,10 @@ function renderCartContents() {
 }
 
 function cartItemTemplate(item) {
+  
   return `<li class="cart-card divider">
     <a href="#" class="cart-card__image">
-      <img src="${item.Image}" alt="${item.Name}" />
+      <img src="${item.Images.PrimaryExtraLarge}" alt="${item.Name}" />
     </a>
     <a href="#">
       <h2 class="card__name">${item.Name}</h2>
@@ -49,7 +50,6 @@ function cartItemTemplate(item) {
     <span class="remove-item" data-id="${item.Id}">X</span> <!-- Add "X" for removal -->
   </li>`;
 }
-
 function attachRemoveListeners() {
   const removeButtons = document.querySelectorAll(".remove-item");
   removeButtons.forEach((button) => {
